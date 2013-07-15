@@ -32,10 +32,10 @@ If you want to write a handler for sidekiq or delayed job, please fork the proje
 
 A completely custom handler can be implemented outside of the gem by subclassing Audited::Deferrable::Base, then setting that class to defer_with directly:
 
-  class Audited::Deferrable::CustomProvider < Audited::Deferrable::Base
-    ...
-  end
-
-  Audited.defer_with = Audited::Deferrable::CustomProvider
+    class Audited::Deferrable::CustomProvider < Audited::Deferrable::Base
+      ...
+    end
+    
+    Audited.defer_with = Audited::Deferrable::CustomProvider
 
 
