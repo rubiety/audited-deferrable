@@ -1,6 +1,6 @@
 # audited-deferrable
 
-Extension to the audited gem to deferred writing of audits via Resque, but with modular architecture to support adding other providers such as sidekiq and delayed job (pull requests, please!)
+Extension to the audited gem to defer writing of audits via Resque, but with modular architecture to support adding other providers such as sidekiq and delayed job (pull requests, please!)
 
 NOTE: This currently only works with Resque v1, not Resque v2 which is a different API. I'd gladly accept pull requests supporting both.
 
@@ -16,7 +16,7 @@ In an initializer (config/initializers/audited.rb):
 
     Audited.defer_with = :resque
 
-After this, all of your audits will be written to the resque queue, and to completely them you'll need to run a resque worker:
+After this, all of your audits will be written to the resque queue, and to complete them you'll need to run a resque worker:
 
     $ QUEUE=audited rake environment resque:work
 
