@@ -10,6 +10,7 @@ Gem::Specification.new do |s|
   s.homepage    = "http://github.com/rubiety/audited-deferrable"
   s.summary     = "Extension to the audited gem to deferred writing of audits via Resque, Delayed Job, or Sidekiq"
   s.description = s.summary
+  s.license     = "MIT"
 
   s.files        = Dir["{lib,spec,vendor}/**/*", "[A-Z]*", "init.rb"]
   s.require_path = "lib"
