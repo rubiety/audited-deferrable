@@ -19,8 +19,8 @@ module Audited
       end
 
       def self.from_arguments(object_class_name, object_id, user_class_name, user_id, attrs)
-        object = object_class_name.constantize.find(object_id)
-        user = user_class_name.constantize.find(user_id) if user_class_name
+        object = object_class_name.constantize.find(object_id) rescue nil
+        user = user_class_name.constantize.find(user_id) rescue nil if user_class_name
         new(object, user, attrs)
       end
 
@@ -29,8 +29,12 @@ module Audited
       end
 
       def work
-        Audited.audit_class.as_user(@user) do
-          @object.send(:write_audit_without_deferrable, @attrs)
+        if @object
+          Audited.audit_class.as_user(@user) do
+            @object.send(:write_audit_without_deferrable, @attrs)
+          end
+        else
+          false
         end
       end
 
